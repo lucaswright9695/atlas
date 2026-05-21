@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ATLAS · geopolitical timeline</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="bg-grain"></div>
+<div class="bg-gradient"></div>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="brand-mark">A</span>
+    <span class="brand-text">ATLAS · geopolitical timeline</span>
+  </div>
+  <div class="topbar-actions">
+    <button id="btn-settings" class="btn-ghost">Settings</button>
+    <button id="btn-refresh" class="btn-gold">Refresh feed</button>
+  </div>
+</div>
+
+<div class="mirror-notice is-resolved">
+  <div class="mirror-notice__inner">
+    <span class="mirror-notice__text">ATLAS · open source on GitHub. Full project source, MIT licensed. Runs entirely in your browser.</span>
+    <span class="mirror-notice__links">
+      <a class="mirror-notice__link" href="https://github.com/lucaswright9695/atlas" target="_blank" rel="noopener">github.com/lucaswright9695/atlas</a>
+    </span>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar__section">
+      <div class="sidebar__title">Region</div>
+      <div class="sidebar__filters" id="region-filters">
+        <button class="filter-pill is-active" data-region="all">All</button>
+        <button class="filter-pill" data-region="europe">Europe</button>
+        <button class="filter-pill" data-region="asia">Asia</button>
+        <button class="filter-pill" data-region="middle_east">Middle East</button>
+        <button class="filter-pill" data-region="americas">Americas</button>
+        <button class="filter-pill" data-region="africa">Africa</button>
+      </div>
+    </div>
+    <div class="sidebar__section">
+      <div class="sidebar__title">Type</div>
+      <div class="sidebar__filters" id="type-filters">
+        <button class="filter-pill is-active" data-type="all">All</button>
+        <button class="filter-pill" data-type="conflict">Conflict</button>
+        <button class="filter-pill" data-type="election">Election</button>
+        <button class="filter-pill" data-type="treaty">Treaty</button>
+        <button class="filter-pill" data-type="crisis">Crisis</button>
+        <button class="filter-pill" data-type="breakthrough">Breakthrough</button>
+      </div>
+    </div>
+    <div class="sidebar__section">
+      <div class="sidebar__title">Year range</div>
+      <div class="sidebar__year-range">
+        <input type="range" id="year-min" min="2020" max="2025" value="2020">
+        <input type="range" id="year-max" min="2020" max="2025" value="2025">
+        <div class="sidebar__year-readout"><span id="year-readout">2020 — 2025</span></div>
+      </div>
+    </div>
+    <div class="sidebar__section">
+      <div class="sidebar__title">Countries</div>
+      <ul id="country-list" class="country-list"></ul>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="timeline-wrap" id="timeline-wrap">
+      <svg id="timeline" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <div class="legend">
+      <span class="legend__item"><span class="legend__dot" style="background:#E14B4B"></span>Conflict</span>
+      <span class="legend__item"><span class="legend__dot" style="background:#F3CF5E"></span>Election</span>
+      <span class="legend__item"><span class="legend__dot" style="background:#7AC74F"></span>Treaty</span>
+      <span class="legend__item"><span class="legend__dot" style="background:#FF8C42"></span>Crisis</span>
+      <span class="legend__item"><span class="legend__dot" style="background:#5DADE2"></span>Breakthrough</span>
+    </div>
+  </main>
+
+  <aside class="detail" id="detail">
+    <div class="detail__empty">
+      <div class="detail__empty-icon">·</div>
+      <div class="detail__empty-text">Select an event on the timeline to see its strategic brief.</div>
+    </div>
+  </aside>
+</div>
+
+<div class="settings-modal" id="settings-modal" hidden>
+  <div class="settings-modal__backdrop" data-close></div>
+  <div class="settings-modal__panel">
+    <div class="settings-modal__head">
+      <h3>MiMo reasoning</h3>
+      <button class="btn-icon" data-close>×</button>
+    </div>
+    <div class="settings-modal__body">
+      <label>API Key
+        <input type="password" id="mimo-key" placeholder="sk-...">
+      </label>
+      <label>Endpoint
+        <input type="text" id="mimo-endpoint" placeholder="https://token-plan-sgp.xiaomimimo.com" value="https://token-plan-sgp.xiaomimimo.com">
+      </label>
+      <label class="check-row">
+        <input type="checkbox" id="mimo-enabled">
+        <span>Enable MiMo strategic briefs</span>
+      </label>
+      <div class="settings-modal__note">Keys are stored in localStorage and never transmitted except to the configured endpoint.</div>
+    </div>
+    <div class="settings-modal__foot">
+      <button class="btn-gold" id="settings-save">Save</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">ATLAS</div>
+    <div class="footer__text">Aggregates from public sources. AI strategic briefs are heuristic interpretations and may oversimplify complex geopolitical dynamics. Always cross-reference with primary sources.</div>
+    <div class="footer__meta">MIT · vanilla HTML/CSS/JS · no backend</div>
+  </div>
+</footer>
+
+<script src="js/util.js"></script>
+<script src="js/sources.js"></script>
+<script src="js/timeline.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
