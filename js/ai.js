@@ -1,4 +1,4 @@
-// ai.js — MiMo reasoning slot for strategic briefs
+// ai.js — AI reasoning slot for strategic briefs
 
 (function () {
   'use strict';
@@ -37,7 +37,7 @@
           Authorization: `Bearer ${settings.key}`,
         },
         body: JSON.stringify({
-          model: 'mimo-v2.5-pro',
+          model: 'ai-v2.5-pro',
           messages: [
             { role: 'system', content: 'You are a geopolitical analyst. Produce concise structured strategic briefs.' },
             { role: 'user', content: prompt },
@@ -46,7 +46,7 @@
           max_tokens: 600,
         }),
       });
-      if (!res.ok) throw new Error('mimo failed: ' + res.status);
+      if (!res.ok) throw new Error('ai failed: ' + res.status);
       const json = await res.json();
       const text = json.choices?.[0]?.message?.content || '';
       const brief = parseBrief(text);

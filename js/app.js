@@ -63,9 +63,9 @@
     const modal = document.getElementById('settings-modal');
     const open = document.getElementById('btn-settings');
     const save = document.getElementById('settings-save');
-    const keyEl = document.getElementById('mimo-key');
-    const endpointEl = document.getElementById('mimo-endpoint');
-    const enabledEl = document.getElementById('mimo-enabled');
+    const keyEl = document.getElementById('ai-key');
+    const endpointEl = document.getElementById('ai-endpoint');
+    const enabledEl = document.getElementById('ai-enabled');
 
     open.addEventListener('click', () => {
       const s = AtlasAI.getSettings();
